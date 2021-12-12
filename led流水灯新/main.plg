@@ -1,0 +1,32 @@
+<html>
+<body>
+<pre>
+<h1>礦ision Build Log</h1>
+<h2>Project:</h2>
+D:\单片机cun\led流水灯新\main.uvproj
+Project File Date:  11/29/2021
+
+<h2>Output:</h2>
+Build target 'Target 1'
+compiling main.c...
+main.c(2): warning C315: unknown #directive 'iclude'
+main.c(4): error C129: missing ';' before '16'
+Target not created
+Build target 'Target 1'
+compiling main.c...
+main.c(15): error C141: syntax error near '16', expected ')'
+Target not created
+Build target 'Target 1'
+compiling main.c...
+main.c(16): error C158: '_main': function contains unnamed parameter
+Target not created
+Build target 'Target 1'
+compiling main.c...
+main.c(16): error C158: '_main': function contains unnamed parameter
+Target not created
+Build target 'Target 1'
+compiling main.c...
+linking...
+Program Size: data=9.0 xdata=0 code=66
+creating hex file from "main"...
+"main" - 0 Error(s), 0 Warning(s).
