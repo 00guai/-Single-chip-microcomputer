@@ -1,0 +1,61 @@
+C51 COMPILER V9.52.0.0   MAIN                                                              12/10/2021 20:30:57 PAGE 1   
+
+
+C51 COMPILER V9.52.0.0, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN main.OBJ
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE main.c BROWSE DEBUG OBJECTEXTEND TABS(2)
+
+line level    source
+
+   1          #include<reg52.h>
+   2          #include<intrins.h>
+   3          
+   4          typedef unsigned int u16;
+   5          typedef unsigned char u8;
+   6          
+   7          
+   8          sbit led=P0^0;
+   9          sbit k1=P1^0;//定义按键
+  10          
+  11          void delay(u16 i)
+  12          {
+  13   1        while(i--);
+  14   1      }
+  15          
+  16          
+  17          
+  18          void keypros()
+  19          {
+  20   1        if(k1==0)//判断按键是否为低电平
+  21   1        {
+  22   2          delay(1000);//消抖
+  23   2          if(k1==0)
+  24   2          {
+  25   3            led=~led;//取反从高电平到低电平，从亮到熄灭
+  26   3          }
+  27   2          while(!k1);
+  28   2        }
+  29   1      }
+  30          void main()
+  31          {
+  32   1        led=0;//开始为熄灭
+  33   1        while(1)
+  34   1        {
+  35   2             keypros();    
+  36   2        }
+  37   1        
+  38   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     37    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)
