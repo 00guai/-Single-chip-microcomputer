@@ -1,0 +1,81 @@
+C51 COMPILER V9.52.0.0   MAIN                                                              12/11/2021 23:16:42 PAGE 1   
+
+
+C51 COMPILER V9.52.0.0, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN main.OBJ
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE main.c BROWSE DEBUG OBJECTEXTEND TABS(2)
+
+line level    source
+
+   1          #include<reg52.h>
+   2          #include<intrins.h>
+   3          
+   4          typedef unsigned int u16;
+   5          typedef unsigned char u8;
+   6          
+   7          #define GPIO_LED P0//定义
+   8          
+   9          
+  10          sbit IN_PL=P1^6;//移位置入2管脚
+  11          sbit IN_DATA=P1^7;//输出管脚
+  12          sbit SCK=P3^6;//时钟管脚
+  13          
+  14          void delay(u16 i)
+  15          {
+  16   1        while(i--);
+  17   1      }
+  18          
+  19          
+  20          u8 Read74HC165()//读取165的数据  u8是返回的字节值··
+  21          {
+  22   1        u8 indata;
+  23   1        u8 i;
+  24   1        IN_PL=0;//移位，置入在低电平下使用
+  25   1        _nop_();//延时一周期
+  26   1        IN_PL=1;//再拉高
+  27   1        _nop_();
+  28   1         indata=0;
+  29   1        
+  30   1        for(i=0;i<8;i++)//移位   有8字节所以循环8次
+  31   1        {
+  32   2          indata=indata<<1;
+  33   2          SCK=0;
+  34   2          _nop_();
+  35   2          
+  36   2          indata|=IN_DATA;//高电位才会产生影响
+  37   2          SCK=1;
+  38   2        }
+  39   1        return indata;
+  40   1      }
+  41          
+  42          
+  43          
+  44          
+  45          void main()
+  46          {
+  47   1        u8 h165Value;
+  48   1        GPIO_LED=0;
+  49   1        while(1)
+  50   1        {
+  51   2          if(h165Value!=0xff)
+  52   2          {
+  53   3              GPIO_LED=~h165Value;//取反有1个灯亮，不去反7个灯亮
+  54   3          }
+  55   2        }
+C51 COMPILER V9.52.0.0   MAIN                                                              12/11/2021 23:16:42 PAGE 2   
+
+  56   1      } 
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     55    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----       1
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

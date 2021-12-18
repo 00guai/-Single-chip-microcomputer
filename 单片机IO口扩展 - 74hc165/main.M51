@@ -1,0 +1,131 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        12/11/2021  23:16:42  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+C:\KEIL\C51\BIN\BL51.EXE main.obj TO main RAMSIZE (256)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  main.obj (MAIN)
+  C:\KEIL\C51\LIB\C51S.LIB (?C_STARTUP)
+
+
+LINK MAP OF MODULE:  main (MAIN)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     0001H     UNIT         _DATA_GROUP_
+            IDATA   0009H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+            CODE    0003H     001DH     UNIT         ?PR?READ74HC165?MAIN
+            CODE    0020H     000FH     UNIT         ?PR?MAIN?MAIN
+            CODE    002FH     000CH     UNIT         ?C_C51STARTUP
+            CODE    003BH     000BH     UNIT         ?PR?_DELAY?MAIN
+
+
+
+OVERLAY MAP OF MODULE:   main (MAIN)
+
+
+SEGMENT                          DATA_GROUP 
+  +--> CALLED SEGMENT          START    LENGTH
+----------------------------------------------
+?C_C51STARTUP                  -----    -----
+  +--> ?PR?MAIN?MAIN
+
+?PR?MAIN?MAIN                  0008H    0001H
+
+
+
+SYMBOL TABLE OF MODULE:  main (MAIN)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        MAIN
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0080H         PUBLIC        P0
+  D:0090H         PUBLIC        P1
+  D:00B0H         PUBLIC        P3
+  D:00A8H         PUBLIC        IE
+  C:003BH         PUBLIC        _delay
+  C:0003H         PUBLIC        Read74HC165
+BL51 BANKED LINKER/LOCATER V6.22                                                      12/11/2021  23:16:42  PAGE 2
+
+
+  B:0090H.7       PUBLIC        IN_DATA
+  B:0090H.6       PUBLIC        IN_PL
+  D:00B8H         PUBLIC        IP
+  C:0020H         PUBLIC        main
+  D:0098H         PUBLIC        SCON
+  D:0088H         PUBLIC        TCON
+  B:00B0H.6       PUBLIC        SCK
+  D:00C8H         PUBLIC        T2CON
+  D:00D0H         PUBLIC        PSW
+  -------         PROC          _DELAY
+  D:0006H         SYMBOL        i
+  C:003BH         LINE#         14
+  C:003BH         LINE#         15
+  C:003BH         LINE#         16
+  C:0045H         LINE#         17
+  -------         ENDPROC       _DELAY
+  -------         PROC          READ74HC165
+  -------         DO            
+  D:0007H         SYMBOL        indata
+  D:0006H         SYMBOL        i
+  -------         ENDDO         
+  C:0003H         LINE#         20
+  C:0003H         LINE#         21
+  C:0003H         LINE#         24
+  C:0005H         LINE#         25
+  C:0006H         LINE#         26
+  C:0008H         LINE#         27
+  C:0009H         LINE#         28
+  C:000BH         LINE#         30
+  C:000CH         LINE#         31
+  C:000CH         LINE#         32
+  C:0010H         LINE#         33
+  C:0012H         LINE#         34
+  C:0013H         LINE#         36
+  C:0019H         LINE#         37
+  C:001BH         LINE#         38
+  C:001FH         LINE#         39
+  C:001FH         LINE#         40
+  -------         ENDPROC       READ74HC165
+  -------         PROC          MAIN
+  -------         DO            
+  D:0008H         SYMBOL        h165Value
+  -------         ENDDO         
+  C:0020H         LINE#         45
+  C:0020H         LINE#         46
+  C:0020H         LINE#         48
+  C:0023H         LINE#         49
+  C:0023H         LINE#         50
+  C:0023H         LINE#         51
+  C:0028H         LINE#         52
+  C:0028H         LINE#         53
+  C:002DH         LINE#         54
+  C:002DH         LINE#         55
+  -------         ENDPROC       MAIN
+  -------         ENDMOD        MAIN
+
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+BL51 BANKED LINKER/LOCATER V6.22                                                      12/11/2021  23:16:42  PAGE 3
+
+
+    SEGMENT: ?PR?_DELAY?MAIN
+
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?READ74HC165?MAIN
+
+Program Size: data=10.0 xdata=0 code=70
+LINK/LOCATE RUN COMPLETE.  2 WARNING(S),  0 ERROR(S)
